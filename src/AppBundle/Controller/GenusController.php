@@ -16,9 +16,15 @@ class GenusController extends Controller
      */
     public function showAction($genusName)
     {
+        $funFact = 'Octopuses can change the color of their body in just *three-tenths* of a second!';
+    
+        $funFact = $this->get('markdown.parser.parser_manager')
+            ->transform($funFact);
+        
         return $this->render('genus/show.html.twig', array(
             'notes' => [],
             'name' => $genusName,
+            'funFact' => $funFact,
         ));
     }
     
@@ -35,7 +41,7 @@ class GenusController extends Controller
         ];
     
         $data = [
-            'notes' => $notes
+            'notes' => $notes,
         ];
         
         return new JsonResponse($data);
