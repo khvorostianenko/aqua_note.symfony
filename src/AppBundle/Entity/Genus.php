@@ -38,6 +38,19 @@ class Genus
     private $funFact;
     
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublished;
+    
+    /**
+     * @param mixed $isPublished
+     */
+    public function setIsPublished($isPublished)
+    {
+        $this->isPublished = $isPublished;
+    }
+    
+    /**
      * @return mixed
      */
     public function getSubFamily()
