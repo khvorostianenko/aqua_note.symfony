@@ -3,11 +3,13 @@
 namespace AppBundle\Service;
 
 
+use Knp\Bundle\MarkdownBundle\Parser\ParserManager;
+
 class MarkdownTransformer
 {
     private $markdownParser;
     
-    public function __construct($markdownParser)
+    public function __construct(ParserManager $markdownParser)
     {
     
         $this->markdownParser = $markdownParser;
