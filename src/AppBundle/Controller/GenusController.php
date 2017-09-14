@@ -7,7 +7,6 @@ use AppBundle\Entity\Genus;
 use AppBundle\Entity\GenusNote;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Service\MarkdownTransformer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -73,7 +72,7 @@ class GenusController extends Controller
             throw $this->createNotFoundException('No genus found');
         }
         
-        $transformer = new MarkdownTransformer($this->get('markdown.parser.parser_manager'));
+        $transformer = $this->get('app.markdown_transformer');
         $funFact = $transformer->parse($genus->getFunFact());
         
         /*
