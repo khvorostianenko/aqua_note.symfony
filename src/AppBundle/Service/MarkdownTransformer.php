@@ -2,24 +2,23 @@
 
 namespace AppBundle\Service;
 
-
 use Doctrine\Common\Cache\Cache;
 use Knp\Bundle\MarkdownBundle\Parser\ParserManager;
 
 class MarkdownTransformer
 {
     private $markdownParser;
-    private $cashe;
+    private $cache;
     
-    public function __construct(ParserManager $markdownParser, Cache $cashe)
+    public function __construct(ParserManager $markdownParser, Cache $cache)
     {
         $this->markdownParser = $markdownParser;
-        $this->cashe = $cashe;
+        $this->cache = $cache;
     }
     
     public function parse($str)
     {
-        $cache = $this->cashe;
+        $cache = $this->cache;
     
         $key = md5($str);
         

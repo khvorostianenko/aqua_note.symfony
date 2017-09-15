@@ -4,9 +4,16 @@ imports:
     - { resource: services.yml }
 
 services:
+    Doctrine\Common\Cache\Cache: '@doctrine_cache.providers.my_markdown_cache'
     app.markdown_transformer:
         class: AppBundle\Service\MarkdownTransformer
         arguments: ['@markdown.parser.parser_manager', '@doctrine_cache.providers.my_markdown_cache']
+
+    app.markdown_extension:
+        class: AppBundle\Twig\MarkdownExtension
+        tags:
+            - { name: twig.extension }
+        arguments: ['@app.markdown_transformer']
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
