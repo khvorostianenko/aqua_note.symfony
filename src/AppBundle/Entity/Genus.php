@@ -50,9 +50,38 @@ class Genus
      */
     private $notes;
     
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $firstDiscoveredAt;
+    
     public function __construct()
     {
         $this->notes = new ArrayCollection();
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getFirstDiscoveredAt()
+    {
+        return $this->firstDiscoveredAt;
+    }
+    
+    /**
+     * @param mixed $firstDiscoveredAt
+     */
+    public function setFirstDiscoveredAt($firstDiscoveredAt)
+    {
+        $this->firstDiscoveredAt = $firstDiscoveredAt;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getIsPublished()
+    {
+        return $this->isPublished;
     }
     
     /**
