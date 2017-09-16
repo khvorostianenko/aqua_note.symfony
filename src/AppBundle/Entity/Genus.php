@@ -88,6 +88,14 @@ class Genus
     /**
      * @return mixed
      */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    /**
+     * @return mixed
+     */
     public function getIsPublished()
     {
         return $this->isPublished;
@@ -130,7 +138,7 @@ class Genus
      */
     public function getFunFact()
     {
-        return '**TEST** '.$this->funFact;
+        return $this->funFact;
     }
     
     /**
