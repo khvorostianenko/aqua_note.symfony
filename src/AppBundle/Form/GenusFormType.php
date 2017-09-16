@@ -3,7 +3,10 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Genus;
+use AppBundle\Entity\SubFamily;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,10 +16,19 @@ class GenusFormType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('subFamily')
+            // или можно вместо EntityType::class указать null, тогда симфони сам укажет EntityType::class и 'class' => SubFamily::class
+            ->add('subFamily', EntityType::class, [
+                'class' => SubFamily::class,
+                'placeholder' => 'Choose an option',
+            ])
             ->add('speciesCount')
             ->add('funFact')
-            ->add('isPublished')
+            ->add('isPublished', ChoiceType::class, [
+                'choices' => [
+                    'Yes' => true,
+                    'No' => false,
+                ]
+            ])
             ->add('firstDiscoveredAt');
     }
 
