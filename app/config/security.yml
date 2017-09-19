@@ -31,4 +31,5 @@ security:
     encoders:
         AppBundle\Entity\User: bcrypt
     access_control:
-        - { path: ^/admin, roles: ROLE_USER }
+#  не гибкий вариант контроля доступа, лучше в каждом контроллере или методе
+#        - { path: ^/admin, roles: ROLE_USER }
