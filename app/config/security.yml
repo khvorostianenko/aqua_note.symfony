@@ -28,6 +28,7 @@ security:
             # activate different ways to authenticate
             logout:
                 path: /logout
-
     encoders:
         AppBundle\Entity\User: bcrypt
+    access_control:
+        - { path: ^/admin, roles: ROLE_USER }
