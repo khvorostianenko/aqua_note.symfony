@@ -28,3 +28,6 @@ security:
             # activate different ways to authenticate
             logout:
                 path: /logout
+
+    encoders:
+        AppBundle\Entity\User: bcrypt
