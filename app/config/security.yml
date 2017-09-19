@@ -26,3 +26,5 @@ security:
                 authenticators:
                     - app.security.login_form_authenticator
             # activate different ways to authenticate
+            logout:
+                path: /logout
