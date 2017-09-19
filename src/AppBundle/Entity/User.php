@@ -30,6 +30,13 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $password;
+
+    private $plainPassword;
+
+    /**
      * Returns the username used to authenticate the user.
      *
      * @return string The username
@@ -78,7 +85,35 @@ class User implements UserInterface
      */
     public function getPassword()
     {
-        // leaving blank - I don't need/have a password!
+        $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+
+        // forces the object to look "dirty" to Doctrine. Avoids
+        // Doctrine *not* saving this entity, if only plainPassword changes
+        $this->password = null;
     }
 
     /**
@@ -101,7 +136,7 @@ class User implements UserInterface
      */
     public function eraseCredentials()
     {
-        // leaving blank - I don't need/have a password!
+        $this->plainPassword = null;
     }
 
 }
