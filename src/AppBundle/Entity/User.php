@@ -50,7 +50,15 @@ class User implements UserInterface
     {
         return $this->email;
     }
-
+    
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    
     /**
      * @param mixed $email
      */
