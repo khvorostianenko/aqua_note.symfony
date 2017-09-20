@@ -28,11 +28,13 @@ security:
             # activate different ways to authenticate
             logout:
                 path: /logout
+            switch_user: ~
     encoders:
         AppBundle\Entity\User: bcrypt
     access_control:
 #  не гибкий вариант контроля доступа, лучше в каждом контроллере или методе
 #        - { path: ^/admin, roles: ROLE_USER }
     role_hierarchy:
-        ROLE_ADMIN: [ROLE_MANAGE_GENUS]
+        # для переключения между юзерами к любому урл ?_switch_user=__user_login__
+        ROLE_ADMIN: [ROLE_MANAGE_GENUS, ROLE_ALLOWED_TO_SWITCH]
 
